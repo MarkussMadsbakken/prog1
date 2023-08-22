@@ -2,8 +2,11 @@ package prog;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.Dimension;
+
+import java.awt.Color;
+
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.util.Random;
 
 public class test {
@@ -12,43 +15,44 @@ public class test {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //hva skjer når fanen lukkes?
 
-
-
         JPanel panel = new JPanel(); //panel??
         panel.setLayout(new FlowLayout()); //???
-
-        //knapp
-        JButton button = new JButton();
-        button.setText("button");
-        panel.add(button);
 
         frame.add(panel);
 
         frame.setSize(400,200); //size
         frame.setVisible(true); //vis
 
-        run(frame);
+
+        run(frame, panel);
 
 
     }
 
-    public static void run(JFrame frame){
+    public static void run(JFrame frame, JPanel panel){
         
         Random random = new Random();
 
-        int x = random.nextInt(1);
-        int y = random.nextInt(1);
+        int x = random.nextInt(50);
+        int y = random.nextInt(50);
+
+        int dimx = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int dimy = Toolkit.getDefaultToolkit(). getScreenSize().height;
 
         System.out.println(x);
         System.out.println(y);
 
         //frame.getWidth();
 
-        int topOffsett = frame.getHeight();// - frame.getContentPane().getSize().height;
+        int topOffsett = frame.getHeight() - frame.getContentPane().getSize().height;
         y = y + topOffsett;
 
         int vx = 2;
         int vy = 2;
+
+        y = y + topOffsett/4;
+
+        System.out.println(dimy);
 
         long lastime = System.currentTimeMillis();
         long curtime = System.currentTimeMillis();
@@ -56,13 +60,35 @@ public class test {
         while(true){
             curtime = System.currentTimeMillis();
 
-            if(curtime - lastime > 30){
+            if(curtime - lastime > 15){
                 frame.setLocation(x, y);
+                
+                if(x > dimx - frame.getWidth()){
+                    vx = - vx;
+                    panel.setBackground(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+                }
 
+                if (x < 0){
+                    vx = - vx;
+                    panel.setBackground(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+                }
+
+                if (y > dimy - frame.getHeight()){
+                    vy = - vy;
+                    panel.setBackground(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+                }
+
+                if (y < frame.getHeight() - frame.getContentPane().getSize().height + 10){
+                    vy = - vy;
+                    panel.setBackground(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+                }
                 x = x + vx;
                 y = y + vy;
 
                 lastime = curtime;
+
+                System.out.println(y);
+                System.out.println(vy);
 
             }
 
