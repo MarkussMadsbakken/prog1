@@ -2,10 +2,12 @@ package prog;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.Random;
 
 public class test {
-    public void main(String[] args){
+    public static void main(String[] args){
         JFrame frame = new JFrame("Test"); //lag ny fane
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //hva skjer når fanen lukkes?
@@ -23,7 +25,6 @@ public class test {
         frame.add(panel);
 
         frame.setSize(400,200); //size
-        frame.setLocationRelativeTo(null); //lag i midten av skjermen
         frame.setVisible(true); //vis
 
         run(frame);
@@ -31,21 +32,41 @@ public class test {
 
     }
 
-    public void run(JFrame frame){
-            int a = 0;
-            int b = 0;
-            long lastime = System.currentTimeMillis();
-            long curtime = System.currentTimeMillis();
+    public static void run(JFrame frame){
+        
+        Random random = new Random();
 
-            while(true){
+        int x = random.nextInt(1);
+        int y = random.nextInt(1);
 
-                
-                frame.setLocation(a, b);
+        System.out.println(x);
+        System.out.println(y);
 
-                a = a + 1;
-                b = b + 1;
+        //frame.getWidth();
+
+        int topOffsett = frame.getHeight();// - frame.getContentPane().getSize().height;
+        y = y + topOffsett;
+
+        int vx = 2;
+        int vy = 2;
+
+        long lastime = System.currentTimeMillis();
+        long curtime = System.currentTimeMillis();
+
+        while(true){
+            curtime = System.currentTimeMillis();
+
+            if(curtime - lastime > 30){
+                frame.setLocation(x, y);
+
+                x = x + vx;
+                y = y + vy;
+
+                lastime = curtime;
 
             }
+
         }
+    }
 }
 
