@@ -85,12 +85,7 @@ public class test {
                 y = y + vy;
 
                 lastime = curtime;
-
-                System.out.println(y);
-                System.out.println(vy);
-
             }
-
         }
     }
 }
