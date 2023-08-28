@@ -13,7 +13,7 @@ public class oppg2 {
         System.out.println(Akpris);
         System.out.println(Bkpris);
 
-        if(kiloPris(Apris, Avekt) > kiloPris(Bpris, Bvekt)){
+        if(kiloPris(Apris, Avekt) < kiloPris(Bpris, Bvekt)){
             System.out.println("Vare A er billigere");
         } else {
             System.out.println("Vare B er billigere");

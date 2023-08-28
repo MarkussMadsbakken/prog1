@@ -10,6 +10,9 @@ import java.util.Random;
 
 public class test {
     public static void main(String[] args){
+
+
+
         JFrame frame = new JFrame("Test"); //lag ny fane
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //hva skjer når fanen lukkes?
@@ -85,6 +88,8 @@ public class test {
                 y = y + vy;
 
                 lastime = curtime;
+
+                
             }
         }
     }
