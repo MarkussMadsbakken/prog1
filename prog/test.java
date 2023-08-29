@@ -61,6 +61,7 @@ public class test {
 
         while(true){
             curtime = System.currentTimeMillis();
+            
 
             if(curtime - lastime > 15){
                 frame.setLocation(x, y);
@@ -89,7 +90,7 @@ public class test {
 
                 lastime = curtime;
 
-                
+
             }
         }
     }

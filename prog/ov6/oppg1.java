@@ -2,10 +2,11 @@ package prog.ov6;
 
 import java.util.Random;
 
+
 public class oppg1 {
     public static void main(String[] args){
-        skrivListe(hentRandom(1000));
-        rundAv(4445);
+        skrivListe(hentRandom(10000));
+        rundAv(4549);
     }
 
     public static int[] hentRandom(double antall){
@@ -22,14 +23,14 @@ public class oppg1 {
             System.out.print(i + ": " + liste[i]);
 
             System.out.print(" ");
-            for (int j = 0; j < liste[i]/100; j++){
+            for (int j = 0; j < rundAv(liste[i])/100; j++){
                 System.out.print("*");
             }
             System.out.println("");
         }
     }
 
-    public static void rundAv(int tall){
+    public static int rundAv(int tall){ //TODO
         String sTall = String.valueOf(tall);
         int lengde = sTall.length();
         String ans = "";
@@ -37,8 +38,9 @@ public class oppg1 {
 
         int l = 3;
         int rest = 0;
-
-        if(lengde < 3){
+        System.out.println(lengde);
+        if(lengde < 2){
+            System.out.println("1");
             l = lengde;
         } else {
             rest = lengde-l;
@@ -49,7 +51,7 @@ public class oppg1 {
                 if(i == 1){
                     ans = (Integer.parseInt(String.valueOf(sTall.charAt(i)))+1) + ans;
 
-                } else if(Integer.parseInt(String.valueOf(sTall.charAt(i-1))) > 3){
+                } else if(Integer.parseInt(String.valueOf(sTall.charAt(i))) > 3){
                     ans = "0" + ans;
                     rundetOpp = true;
 
@@ -60,9 +62,10 @@ public class oppg1 {
             } else {
                 if(i == 1){
                     ans = sTall.charAt(i) + ans;
-                } else if(Integer.parseInt(String.valueOf(sTall.charAt(i-1))) > 4){
+                } else if(Integer.parseInt(String.valueOf(sTall.charAt(i))) > 4){
                     ans = "0" + ans;
                     rundetOpp = true;
+                    
                 } else {
                     ans = "0" + ans;
                     rundetOpp = false;
@@ -75,6 +78,6 @@ public class oppg1 {
             ans = sTall.charAt(i-1) + ans;
         }
 
-        System.out.println(ans);
+        return Integer.parseInt(ans);
     }
 }
