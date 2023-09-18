@@ -7,7 +7,7 @@ public class oppg3 {
 
         m1.multiplikasjon(m2).print();
         
-        Matrise m3 = new Matrise(new int[][]{{1,2,3},{4,5,6},{7,8,9}});
+        Matrise m3 = new Matrise(new int[][]{{6,7},{7,8},{4,1}});
         m3.transponer().print();
     }
 
