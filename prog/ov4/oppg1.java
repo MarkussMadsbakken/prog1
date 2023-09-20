@@ -87,6 +87,5 @@ public class oppg1 {
         public double fraKr(double mengde){
             return mengde*rate;
         }
-
     }
 }
