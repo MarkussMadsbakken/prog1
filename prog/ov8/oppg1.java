@@ -7,8 +7,6 @@ import java.util.concurrent.Callable;
 
 public class oppg1 {
     public static void main(String[] args) {
-        System.out.println(KlientProgram.ConsoleColors.BLUE_BACKGROUND_BRIGHT);
-        System.out.println("0+9834209384");
 
         System.out.println(KlientProgram.ConsoleColors.RESET);
 
@@ -59,9 +57,8 @@ public class oppg1 {
                 color.options();
                 System.out.println("1: Legg til arbeidstaker");
                 System.out.println("2: Bla igjennom arbeidstakere");
-                System.out.println("3: Søk etter arbeidstaker");
-                System.out.println("4: Skriv ut alle arbeidstakere");
-                System.out.println("5: Avslutt");
+                System.out.println("3: Skriv ut alle arbeidstakere");
+                System.out.println("4: Avslutt");
 
                 color.h1();
                 System.out.println("****************************************************");
@@ -77,9 +74,6 @@ public class oppg1 {
                     } else if(input == 2){
                         blaIgjennomArbtaker();
                     } else if(input == 3){
-                        System.out.println("Søk etter arbeidstaker");
-                        System.out.println("");
-                    } else if(input == 4){
                         printArbtakerListe();
                     } else {
                         System.out.println("Avslutt");
@@ -584,9 +578,9 @@ public class oppg1 {
 
 
     public static class Person{
-        String fornavn;
-        String etternavn;
-        int fodselsaar;
+        private final String fornavn;
+        private final String etternavn;
+        private final int fodselsaar;
 
         public Person(String fornavn, String etternavn, int fodselsaar){
             this.fornavn = fornavn;
@@ -612,11 +606,11 @@ public class oppg1 {
     }
 
     public static class ArbTaker extends Person{
-        int arbTakerNr;
-        int ansettelsesAar;
-        double maanedsLonn;
-        double skatteProsent;
-        java.util.GregorianCalendar kalender = new java.util.GregorianCalendar();
+        private int arbTakerNr;
+        private int ansettelsesAar;
+        private double maanedsLonn;
+        private double skatteProsent;
+        private java.util.GregorianCalendar kalender = new java.util.GregorianCalendar();
         
 
         public ArbTaker(String fornavn, String etternavn, int fodselsaar, int arbTakerNr, int ansettelsesAar, double maanedsLonn, double skatteProsent){

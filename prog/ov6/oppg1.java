@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class oppg1 {
     public static void main(String[] args){
-        skrivListe(hentRandom(10000));
-        rundAv(4549);
+        skrivListe(hentRandom(100));
+        //rundAv(4549);
     }
 
     public static int[] hentRandom(double antall){
@@ -23,14 +23,14 @@ public class oppg1 {
             System.out.print(i + ": " + liste[i]);
 
             System.out.print(" ");
-            for (int j = 0; j < rundAv(liste[i])/100; j++){
+            for (int j = 0; j < liste[i]/10; j++){
                 System.out.print("*");
             }
             System.out.println("");
         }
     }
 
-    public static int rundAv(int tall){ //TODO
+    public static int rundAv(int tall){ 
         String sTall = String.valueOf(tall);
         int lengde = sTall.length();
         String ans = "";

@@ -29,14 +29,14 @@ public class oppg1 {
         a.divider(b); //3/2
         System.out.println(a.getTeller() + "/" + a.getNevner());
 
-        brok c = new brok(0,0);
+        brok c = new brok(2,2);
         c.forkort();
         System.out.println(c.getTeller() + "/" + c.getNevner());
     }
 
     public static class brok{
-        long teller;
-        long nevner;
+        private long teller;
+        private long nevner;
 
         public brok(long _teller, long _nevner) throws IllegalArgumentException{ 
             if(_nevner == 0){
@@ -107,10 +107,6 @@ public class oppg1 {
             //dybde just in case
             int dybde = 200;
             int i = 0;
-
-            System.out.println(a);
-            System.out.println(b);
-
 
             while(dybde > i){ //https://en.wikipedia.org/wiki/Greatest_common_divisor#Binary_GCD_algorithm
                 if(a%2 == 0 & b%2 == 0){ //hvis a og b er partall

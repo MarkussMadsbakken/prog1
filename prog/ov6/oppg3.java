@@ -2,22 +2,26 @@ package prog.ov6;
 
 public class oppg3 {
     public static void main(String[] args){
-        Matrise m1 = new Matrise(new int[][]{{1,2,3}});
-        Matrise m2 = new Matrise(new int[][]{{10,11},{20,21},{30,31}});
+        Matrise m1 = new Matrise(new int[][]{{1,-2,1},{2,1,3}});
+        Matrise m2 = new Matrise(new int[][]{{2,1},{3,2},{1,8}});
 
-        m1.multiplikasjon(m2).print();
+        m2.multiplikasjon(m1).print();
         
-        Matrise m3 = new Matrise(new int[][]{{6,7},{7,8},{4,1}});
-        m3.transponer().print();
+        Matrise m3 = new Matrise(new int[][]{{6,7},{7,8},{1,2}});
+        //m3.transponer().print();s
     }
 
     public static class Matrise{
-        int[][] matrise;
+        private final int[][] matrise;
 
         public Matrise(int[][] _matrise){
-            matrise = _matrise;
+            for (int i = 0; i < _matrise.length; i++){
+                if (_matrise[i].length != _matrise[0].length){
+                    throw new IllegalArgumentException("Alle radene i matrisen være like lange");
+                }
+            }
 
-            
+            matrise = _matrise;
         }
 
         public int[][] getList(){
@@ -31,6 +35,18 @@ public class oppg3 {
                 }
                 System.out.println("");
             }
+        }
+
+        public String toString(){
+            String res = "";
+            for (int i = 0; i < matrise.length; i++){
+                for (int j = 0; j <matrise[0].length; j++){
+                    res+= matrise[i][j] + " ";
+                }
+                res+= "\n";
+            }
+
+            return res;
         }
 
         public Matrise addisjon(Matrise _m2) throws IllegalArgumentException{
@@ -58,22 +74,19 @@ public class oppg3 {
             System.out.println(m1.length);
             System.out.println(m2.length);
 
-            if(m1[0].length == m2.length){ //bytt matrisene om de kan ganges sammen med reversert rekkefølge
-                int[][] temp = m1;
-                m1 = m2;
-                m2 = temp;
-            }
-
-            if(m1.length != m2[0].length){
+            if(m1[0].length != m2.length){
+                if(m1[0].length == m2.length){ //om matrisene kanskje er i feil rekkefølge
+                    throw new IllegalArgumentException("Kolonnene i den ene matrisen må tilsvare radene i den andre. Mente du: \n" + _m2.toString() + " * \n" + toString() + "?" );
+                }
                 throw new IllegalArgumentException("Kolonnene i den ene matrisen må tilsvare radene i den andre");
             }
             
-            int[][] res = new int[m2.length][m1[0].length];
+            int[][] res = new int[m1.length][m2[0].length];
 
-            for (int i = 0; i < m2.length; i++){ //kollonne
-                for (int j = 0; j < m1[0].length; j++){ //rad
-                    for (int k = 0; k < m1.length; k++){ //element
-                        res[i][j] += m1[k][j]*m2[i][k];
+            for (int i = 0; i < m1.length; i++){ //kollonne
+                for (int j = 0; j < m2[0].length; j++){ //rad
+                    for (int k = 0; k < m2.length; k++){ //element
+                        res[i][j] += m2[k][j]*m1[i][k];
                     }
                 }
             }

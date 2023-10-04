@@ -2,7 +2,7 @@ package prog.ov6;
 
 public class oppg2 {
     public static void main(String[] args){
-        tekstAnalyse analyse = new tekstAnalyse("æøcccck....,.kkkkkkkkkkkkkkkkkkkkkkkccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaåå...ÅØA.Av.7466546.3^^ ^v");
+        tekstAnalyse analyse = new tekstAnalyse("EEEEøcccck....,.kkkkkkkkkkkkkkkkkkkkkkkccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaåå...ÅØA.Av.7466546.3^^ ^v");
         analyse.print();
         System.out.println(analyse.getAntallTegn());
         System.out.println(analyse.getAntallBokstaver());

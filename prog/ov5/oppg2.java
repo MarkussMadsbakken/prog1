@@ -7,6 +7,7 @@ public class oppg2 {
     public static void main(String[] args){
         MinRandom minrandom = new MinRandom();
         System.out.println(minrandom.nesteDesimaltall(0,10));
+        System.out.println(minrandom.nesteHeltall(0,10));
     }
     
     public static class MinRandom{
