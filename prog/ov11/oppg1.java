@@ -1,9 +1,8 @@
-package prog.ov10;
+package prog.ov11;
 
 public class oppg1 {
     public static void main(String[] args){
-        ArrangementKlient klient = new ArrangementKlient();
+        EiendomsRegisterKlient klient = new EiendomsRegisterKlient();
         klient.start();
     }
-    
 }

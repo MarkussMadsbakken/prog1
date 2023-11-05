@@ -1,10 +1,10 @@
-package prog.ov10;
+package prog.ov11;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-     ArrayList<MenuElement> menuElements = new ArrayList<>();
+    ArrayList<MenuElement> menuElements = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
     private boolean run = true;
@@ -49,28 +49,28 @@ public class Menu {
     }
 
     public Object getInput(Object o) throws IllegalArgumentException{
-        String s = scanner.nextLine();
 
-        try{    
-            switch(o.getClass().getSimpleName()){
-                case "String":
-                    return s;
+        while (true){
 
-                case "Integer":
-                    return Integer.parseInt(s);
+            String s = scanner.nextLine();
 
-                case "Double":
-                    return Double.parseDouble(s);
-                
-                case "Long":
-                    return Long.parseLong(s);
-            }
+            try{    
+                switch(o.getClass().getSimpleName()){
+                    case "String":
+                        return s;
 
-        } catch(Exception e){
-            return null;
+                    case "Integer":
+                        return Integer.parseInt(s);
+
+                    case "Double":
+                        return Double.parseDouble(s);
+                    
+                    case "Long":
+                        return Long.parseLong(s);
+                }
+
+            } catch(Exception e){}
         }
-
-        return null;
     }
 
     public void openMenuElement(String name){

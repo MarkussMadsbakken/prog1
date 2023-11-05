@@ -3,7 +3,7 @@ package prog.ov10;
 public class Arrangement {
 
     public enum Type{
-        KONSERT, BARNETEATER, FOREDRAG
+        BARNETEATER, FOREDRAG, KONSERT
     };
 
     private final String navn, sted, arrangor;
@@ -58,5 +58,11 @@ public class Arrangement {
 
     public long getTidspunkt(){
         return tidspunkt;
+    }
+
+    public long getDato(){
+        String a = Long.toString(tidspunkt);
+        a = a.substring(0, 8);
+        return Long.parseLong(a);
     }
 }
