@@ -1,10 +1,20 @@
 package prog.ov11;
 
+/**
+ * Klient-klasse for EiendomsRegisteret
+ */
+
 public class EiendomsRegisterKlient {
     Menu meny = new Menu();
     EiendomsRegister register = new EiendomsRegister();
 
-    public EiendomsRegisterKlient(){
+    /**
+     * Konstruktør for EiendomsRegisterKlient
+     * 
+     * Legger til menyelementer
+     */
+
+    public EiendomsRegisterKlient() {
         meny.addMenuElement(new MenuElement("Legg til eiendom", v -> {
             System.out.println("Legg til eiendom");
 
@@ -36,7 +46,7 @@ public class EiendomsRegisterKlient {
         meny.addMenuElement(new MenuElement("Skriv ut alle eiendommer", v -> {
             Eiendom[] eiendommer = register.getEiendommer();
 
-            for(Eiendom eiendom : eiendommer){
+            for (Eiendom eiendom : eiendommer) {
                 System.out.println(eiendom);
             }
 
@@ -44,13 +54,13 @@ public class EiendomsRegisterKlient {
         }));
 
         meny.addMenuElement(new MenuElement("Søk", v -> {
-            
+
             System.out.print("Skriv inn komnr-gnr/brn: ");
             String i = (String) meny.getInput(new String());
 
             Eiendom eiendom = register.getEiendomFromID(i);
 
-            if(eiendom != null){
+            if (eiendom != null) {
                 System.out.println("Eiendom funnet:");
                 System.out.println(eiendom);
                 return null;
@@ -67,7 +77,11 @@ public class EiendomsRegisterKlient {
         }));
     }
 
-    void start(){
+    /**
+     * Starter klienten
+     */
+
+    void start() {
         register.addEiendom(new Eiendom(1445, "Gloppen", 77, 631, 1017.6, "Jens Olsen"));
         register.addEiendom(new Eiendom(1445, "Gloppen", 77, 131, "Syningom", 661.3, "Nicolay Madsen"));
         register.addEiendom(new Eiendom(1445, "Gloppen", 75, 19, "Fugletun", 650.6, "Evilyn Jensen"));

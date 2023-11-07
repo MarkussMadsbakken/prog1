@@ -3,29 +3,43 @@ package prog.ov11;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * En klasse som representerer en meny
+ */
+
 public class Menu {
     ArrayList<MenuElement> menuElements = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
     private boolean run = true;
 
-    Menu(){
-         menuElements.add(new MenuElement("Avslutt", (Void) ->{
+    /**
+     * Konstruktør for Menu.
+     * 
+     * Legger til et avslutt-element
+     */
+
+    Menu() {
+        menuElements.add(new MenuElement("Avslutt", (Void) -> {
             System.out.println("Avslutter");
             run = false;
             return null;
         }));
     }
 
-    public void start(){
-        while(run){
+    /**
+     * Starter menyen
+     */
+
+    public void start() {
+        while (run) {
             printMenu();
-            Integer a = (Integer)getInput(new Integer(0));
-            if(a != null && a < menuElements.size() && a >= 0){
-                openMenuElement((Integer)a);
+            Integer a = (Integer) getInput(new Integer(0));
+            if (a != null && a < menuElements.size() && a >= 0) {
+                openMenuElement((Integer) a);
             }
 
-            if(run){
+            if (run) {
                 System.out.print("Enter for å gå tilbake");
                 scanner.nextLine();
                 System.out.println(" ");
@@ -34,28 +48,51 @@ public class Menu {
         }
     }
 
-    public void addMenuElement(MenuElement menuElement){
+    /**
+     * Metode for å legge til et menyelement
+     * 
+     * @param menuElement
+     */
+
+    public void addMenuElement(MenuElement menuElement) {
         menuElements.add(menuElement);
     }
 
-    public void printMenu(){
+    /**
+     * Metode for å skrive ut menyen
+     */
+
+    public void printMenu() {
         for (int i = 0; i < menuElements.size(); i++) {
             System.out.println(i + ": " + menuElements.get(i).getName());
         }
     }
 
-    public void openMenuElement(int index){
+    /**
+     * Metode for å åpne et menyelement
+     * 
+     * @param index
+     */
+
+    public void openMenuElement(int index) {
         menuElements.get(index).onOpen.apply(null);
     }
 
-    public Object getInput(Object o) throws IllegalArgumentException{
+    /**
+     * Metode for å hente input fra brukeren
+     * 
+     * @param o objekt som representerer typen input som skal hentes
+     * @return Objekt med type speisifisert i parameteret
+     */
 
-        while (true){
+    public Object getInput(Object o) {
+
+        while (true) {
 
             String s = scanner.nextLine();
 
-            try{    
-                switch(o.getClass().getSimpleName()){
+            try {
+                switch (o.getClass().getSimpleName()) {
                     case "String":
                         return s;
 
@@ -64,18 +101,25 @@ public class Menu {
 
                     case "Double":
                         return Double.parseDouble(s);
-                    
+
                     case "Long":
                         return Long.parseLong(s);
                 }
 
-            } catch(Exception e){}
+            } catch (Exception e) {
+            }
         }
     }
 
-    public void openMenuElement(String name){
+    /**
+     * Metode for å åpne et menyelement ved navn
+     * 
+     * @param name
+     */
+
+    public void openMenuElement(String name) {
         for (int i = 0; i < menuElements.size(); i++) {
-            if (menuElements.get(i).getName().equals(name)){
+            if (menuElements.get(i).getName().equals(name)) {
                 menuElements.get(i).onOpen.apply(null);
                 return;
             }

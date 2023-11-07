@@ -12,4 +12,8 @@ public class Rett {
         this.pris = pris;
         this.oppskrift = oppskrift;
     }
+
+    public String toString() {
+        return navn + " " + type + " " + pris + " " + oppskrift;
+    }
 }

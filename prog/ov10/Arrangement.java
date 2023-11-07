@@ -2,7 +2,7 @@ package prog.ov10;
 
 public class Arrangement {
 
-    public enum Type{
+    public enum Type {
         BARNETEATER, FOREDRAG, KONSERT
     };
 
@@ -10,7 +10,7 @@ public class Arrangement {
     private final Type type;
     private final long tidspunkt;
 
-    public Arrangement(String navn, String sted, String arrangor, Type type, long tidspunkt){
+    public Arrangement(String navn, String sted, String arrangor, Type type, long tidspunkt) {
         this.navn = navn;
         this.sted = sted;
         this.arrangor = arrangor;
@@ -18,49 +18,49 @@ public class Arrangement {
         this.tidspunkt = tidspunkt;
     }
 
-    public int comapareToByTime(Arrangement other){
-        if(this.tidspunkt < other.getTidspunkt()){
+    public int comapareToByTime(Arrangement other) {
+        if (this.tidspunkt < other.getTidspunkt()) {
             return -1;
-        }else if(this.tidspunkt > other.getTidspunkt()){
+        } else if (this.tidspunkt > other.getTidspunkt()) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
 
-    public int comapareToByPlace(Arrangement other){
+    public int comapareToByPlace(Arrangement other) {
         return this.sted.compareTo(other.getSted());
     }
 
-    public int comapareToByType(Arrangement other){
+    public int comapareToByType(Arrangement other) {
         return this.type.compareTo(other.getType());
     }
 
-    public String toString(){
+    public String toString() {
         return navn + " " + sted + " " + arrangor + " " + type + " " + tidspunkt;
     }
 
-    public String getSted(){
+    public String getSted() {
         return sted;
     }
 
-    public String getNavn(){
+    public String getNavn() {
         return navn;
     }
 
-    public String getArrangør(){
+    public String getArrangør() {
         return arrangor;
     }
 
-    public Type getType(){
+    public Type getType() {
         return type;
     }
 
-    public long getTidspunkt(){
+    public long getTidspunkt() {
         return tidspunkt;
     }
 
-    public long getDato(){
+    public long getDato() {
         String a = Long.toString(tidspunkt);
         a = a.substring(0, 8);
         return Long.parseLong(a);
